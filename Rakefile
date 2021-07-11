@@ -3,4 +3,11 @@
 
 require_relative "config/application"
 
+require 'resque'
+require 'resque/tasks'
+
+rails_root = ENV['RAILS_ROOT'] || File.dirname(__FILE__) + '/'
+
 Rails.application.load_tasks
+
+task 'resque:setup' => :environment
